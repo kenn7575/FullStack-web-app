@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "OOP APP\BL.csproj", "{554244E2-A061-47CF-94AC-7C1CDC295387}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97C73542-E7E6-47EB-825A-94EE8EC6EB20} = {97C73542-E7E6-47EB-825A-94EE8EC6EB20}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D2BD7482-713F-493D-82C4-79DACA837C1F}"
 EndProject
@@ -14,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "Frontend\UI.csproj", "{A8EC456D-58C9-4AA6-9B10-40DEDB2C4274}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "Frontend\UI.csproj", "{A8EC456D-58C9-4AA6-9B10-40DEDB2C4274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA", "DA\DA.csproj", "{97C73542-E7E6-47EB-825A-94EE8EC6EB20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DA", "DA\DA.csproj", "{97C73542-E7E6-47EB-825A-94EE8EC6EB20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
