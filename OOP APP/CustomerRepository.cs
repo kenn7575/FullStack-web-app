@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOP_APP;
+using BL;
 
-namespace OOP_APP
+namespace BL
 {
     public class CustomerRepository
     {
@@ -14,7 +14,8 @@ namespace OOP_APP
             addressRepository = new AddressRepository();
         }
         private AddressRepository addressRepository { get; set; }
-        //retrieve customer
+        
+        //retrieve one customer
         public Customer Retrieve(int customerId)
         {
             //create instance of customer class
@@ -53,6 +54,12 @@ namespace OOP_APP
             }
             return customer;
         }
+        //retrieve all customers
+        public List<Customer> Retrieve()
+        {
+            //code that retrieves all of the customers
+            return new List<Customer>();
+        }
         //saves the current customer
         public bool Save(Customer customer)
         {
@@ -63,7 +70,7 @@ namespace OOP_APP
                 {
                     if (customer.IsNeW)
                     {
-                        //call an insert stored procedure
+                        
                     }
                     else
                     {

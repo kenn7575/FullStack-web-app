@@ -25,6 +25,13 @@ namespace BL
             }
             return product;
         }
+        //retrieve all products
+        public IEnumerable<Product> Retrieve()
+        {
+            //code that retrieves all of the products
+            //temporary hard coded values to return a set of products
+            return new List<Product>();
+        }
         //saves the current product
         public bool Save(Product product)
         {
@@ -49,5 +56,6 @@ namespace BL
             }
             return success;
         }
+        
     }
 }
