@@ -3,8 +3,11 @@
     public class DatabaseAccess
     {
         public DatabaseAccess(){
-            Database = "MyDatabase";
+            ConnectionString = "Server=localhost;" +
+            "Database=Buisness;" +
+               "UID=sa;" +
+               "Password=1234";
         }
-        public static string Database { get; private set; }
+        public static string? ConnectionString { get; private set; }
     }
 }
