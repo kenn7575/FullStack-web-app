@@ -43,6 +43,24 @@ namespace DA
             }
             return JsonSerializer.Serialize(products);
         }
+        //Update product
+        public void Update(Product product)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                string Query = "UPDATE Product SET product_name = "+product.ProductName+", description = "+product.Description+", current_price = "+product.CurrentPrice+", quantity = "+product.QuantityInStock+" WHERE product_id = "+product.ProductId+";";
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@product_id", product.ProductId);
+                    command.Parameters.AddWithValue("@product_name", product.ProductName);
+                    command.Parameters.AddWithValue("@description", product.Description);
+                    command.Parameters.AddWithValue("@current_price", product.CurrentPrice);
+                    command.Parameters.AddWithValue("@quantity", product.QuantityInStock);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
 

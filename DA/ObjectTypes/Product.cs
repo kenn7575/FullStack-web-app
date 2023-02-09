@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DA
 {
     
-    internal class Product
+    public class Product
     {
       
         public int? ProductId { get;  set; }

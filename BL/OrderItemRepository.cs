@@ -49,7 +49,7 @@ namespace BL
                     }
                     else
                     {
-                        //call an update stored procedure
+                        Console.WriteLine("Works");
                     }
                 }
                 else

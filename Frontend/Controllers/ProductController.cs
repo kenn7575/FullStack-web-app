@@ -79,8 +79,18 @@ namespace UI.Controllers
         {
             try
             {
-                //Tryl noget kode her...
-                //->
+                //save product to database
+                ProductRepository repo = new ProductRepository();
+                Product productToSave = new Product(){
+                    ProductId = product.ProductId,
+                    ProductName = product.ProductName,
+                    Description = product.Description,
+                    CurrentPrice = product.CurrentPrice,
+                    QuantityInStock = product.QuantityInStock,
+                    HasChanges = true,
+                    
+                };
+                repo.Save(productToSave);
                 return RedirectToAction(nameof(Index));
             }
             catch
