@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using BL;
+using DA;
 //import the namespace DA
 
 namespace BL
@@ -14,7 +15,10 @@ namespace BL
         public Product Retrieve(int productId)
         {
             //create instance of product class
-            Product product = new Product(productId);
+            Product product = new Product()
+            {
+                ProductId = 1
+            };
             //code that retrieves defined product
             
             //temporary hard coded values to return a populated product
@@ -31,7 +35,13 @@ namespace BL
         {
             //code that retrieves all of the products
             //temporary hard coded values to return a set of products
-            return new List<Product>();
+            DA.ProductDataAccess productRepository = new DA.ProductDataAccess();
+            string json= productRepository.Retrieve();
+            
+            
+            //deserialize the json string   
+            return JsonSerializer.Deserialize<List<Product>>(json);
+            
         }
         //saves the current product
         public bool Save(Product product)

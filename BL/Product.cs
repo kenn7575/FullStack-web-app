@@ -8,15 +8,6 @@ namespace BL
 {
     public class Product : EntityBase
     {
-        public Product()
-        {
-            
-        }
-        public Product(int productID)
-        {
-            ProductId = productID;
-        }
-
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
@@ -28,7 +19,7 @@ namespace BL
             var errorsCount = 0;
             if (string.IsNullOrWhiteSpace(ProductName)) errorsCount++;
             if (string.IsNullOrWhiteSpace(Description)) errorsCount++;
-            if (CurrentPrice <= 0 || CurrentPrice == null) errorsCount++;
+            if (CurrentPrice is <= 0 or null) errorsCount++;
             if (ProductId <= 0) errorsCount++;
             if (QuantityInStock <= 0) errorsCount++;
             if (errorsCount > 0) return false;

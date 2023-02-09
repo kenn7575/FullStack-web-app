@@ -9,7 +9,7 @@ using System.Reflection.PortableExecutable;
 
 namespace DA
 {
-    public class ProductRepository : DatabaseAccess
+    public class ProductDataAccess : DatabaseAccess
     {
         public string Retrieve()
         {
@@ -19,7 +19,7 @@ namespace DA
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                string Query = "SELECT * FROM Customer;";
+                string Query = "SELECT * FROM Product;";
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -27,10 +27,10 @@ namespace DA
                         while (reader.Read())
                         {
                             var product = new Product();
-                            product.ProductID = reader["product_id"] as int?;
+                            product.ProductId = (int) reader["product_id"];
                             product.ProductName = reader["product_name"] as string;
                             product.Description = reader["description"] as string;
-                            product.CurrentPrice = reader["current_price"] as decimal?;
+                            product.CurrentPrice = (double) reader["current_price"];
                             product.QuantityInStock = reader["quantity"] as int?;
                             products.Add(product);
                         }
