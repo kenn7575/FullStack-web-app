@@ -19,7 +19,7 @@ namespace DA
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                string Query = "SELECT * FROM Product;";
+                string Query = "SELECT * FROM Product";
                 if (Id > 0)
                 {
                     Query += " WHERE product_id = " + Id;
@@ -49,7 +49,7 @@ namespace DA
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                string Query = "UPDATE Product SET product_name = "+product.ProductName+", description = "+product.Description+", current_price = "+product.CurrentPrice+", quantity = "+product.QuantityInStock+" WHERE product_id = "+product.ProductId+";";
+                string Query = "UPDATE Product SET product_name = @product_name, description = @description, current_price = @description, quantity = @quantity WHERE product_id = @product_id";
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     command.Parameters.AddWithValue("@product_id", product.ProductId);

@@ -12,31 +12,14 @@ namespace BL
     public class ProductRepository
     {
         //retrieve one product
-        public Product Retrieve(int productId)
-        {
-            //create instance of product class
-            Product product = new Product()
-            {
-                ProductId = 1
-            };
-            //code that retrieves defined product
-            
-            //temporary hard coded values to return a populated product
-            if (productId == 1)
-            {
-                product.ProductName = "Sunflowers";
-                product.Description = "Assorted Size Set of 4 Bright Yellow Mini Sunflowers";
-                product.CurrentPrice = 15.96M;
-            }
-            return product;
-        }
+
         //retrieve all products
-        public IEnumerable<Product> Retrieve()
+        public List<Product> Retrieve(int id = 0)
         {
             //code that retrieves all of the products
             //temporary hard coded values to return a set of products
             DA.ProductDataAccess productRepository = new DA.ProductDataAccess();
-            string json= productRepository.Retrieve();
+            string json= productRepository.Retrieve(id);
             
             
             //deserialize the json string   
@@ -51,6 +34,16 @@ namespace BL
             {
                 if (product.IsValid)
                 {
+                    ProductDataAccess productDataAccess = new ProductDataAccess();
+                    DA.Product daProduct = new DA.Product
+                    {
+                        CurrentPrice = product.CurrentPrice,
+                        ProductName = product.ProductName,
+                        ProductId = product.ProductId,
+                        Description = product.Description,
+                        QuantityInStock = product.QuantityInStock
+                    };
+                    
                     if (product.IsNeW)
                     {
                         //call an insert stored procedure
@@ -59,7 +52,7 @@ namespace BL
                     {
                         //call an update stored procedure
                         Console.WriteLine("Works");
-
+                        productDataAccess.Update(daProduct);
                     }
                 }
                 else

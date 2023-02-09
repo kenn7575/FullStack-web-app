@@ -60,7 +60,7 @@ namespace UI.Controllers
         public ActionResult Edit(int id)
         {
             ProductRepository repo = new ProductRepository();
-            List<Product> products = repo.Retrieve().ToList();
+            List<Product> products = repo.Retrieve(id);
             
            
             ProductModel productModel = new();
@@ -82,7 +82,7 @@ namespace UI.Controllers
                 //save product to database
                 ProductRepository repo = new ProductRepository();
                 Product productToSave = new Product(){
-                    ProductId = product.ProductId,
+                    ProductId = id,
                     ProductName = product.ProductName,
                     Description = product.Description,
                     CurrentPrice = product.CurrentPrice,
@@ -93,7 +93,7 @@ namespace UI.Controllers
                 repo.Save(productToSave);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
