@@ -11,7 +11,7 @@ namespace DA
 {
     public class ProductDataAccess : DatabaseAccess
     {
-        public string Retrieve()
+        public string Retrieve(int Id = 0)
         {
             var products = new List<Product>();
             // Code that retrieves all products from the database
@@ -20,6 +20,10 @@ namespace DA
             {
                 connection.Open();
                 string Query = "SELECT * FROM Product;";
+                if (Id > 0)
+                {
+                    Query += " WHERE product_id = " + Id;
+                }
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())

@@ -59,16 +59,28 @@ namespace UI.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ProductRepository repo = new ProductRepository();
+            List<Product> products = repo.Retrieve().ToList();
+            
+           
+            ProductModel productModel = new();
+            productModel.ProductId = products[0].ProductId;
+            productModel.ProductName = products[0].ProductName;
+            productModel.Description = products[0].Description;
+            productModel.CurrentPrice = products[0].CurrentPrice;
+            productModel.QuantityInStock = products[0].QuantityInStock;
+            return View(productModel);
         }
 
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ProductModel product)
         {
             try
             {
+                //Tryl noget kode her...
+                //->
                 return RedirectToAction(nameof(Index));
             }
             catch
