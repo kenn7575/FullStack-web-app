@@ -62,14 +62,17 @@ namespace UI.Controllers
             ProductRepository repo = new ProductRepository();
             List<Product> products = repo.Retrieve(id);
             
-           
-            ProductModel productModel = new();
-            productModel.ProductId = products[0].ProductId;
-            productModel.ProductName = products[0].ProductName;
-            productModel.Description = products[0].Description;
-            productModel.CurrentPrice = products[0].CurrentPrice;
-            productModel.QuantityInStock = products[0].QuantityInStock;
-            return View(productModel);
+           if (products.Count > 0)
+            {
+                ProductModel productModel = new();
+                productModel.ProductId = products[0].ProductId;
+                productModel.ProductName = products[0].ProductName;
+                productModel.Description = products[0].Description;
+                productModel.CurrentPrice = products[0].CurrentPrice;
+                productModel.QuantityInStock = products[0].QuantityInStock;
+                return View(productModel);
+            }
+            return(NotFound());
         }
 
         // POST: ProductController/Edit/5

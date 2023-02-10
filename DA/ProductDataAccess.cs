@@ -49,14 +49,15 @@ namespace DA
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                string Query = "UPDATE Product SET product_name = @product_name, description = @description, current_price = @description, quantity = @quantity WHERE product_id = @product_id";
+                string Query = "UPDATE Product SET product_name = @product_name, description = @description, current_price = @current_price, quantity = @quantity WHERE product_id = @product_id";
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
-                    command.Parameters.AddWithValue("@product_id", product.ProductId);
+                    command.Parameters.AddWithValue("@product_id",  product.ProductId);
                     command.Parameters.AddWithValue("@product_name", product.ProductName);
                     command.Parameters.AddWithValue("@description", product.Description);
-                    command.Parameters.AddWithValue("@current_price", product.CurrentPrice);
+                    command.Parameters.AddWithValue("@current_price",  product.CurrentPrice);
                     command.Parameters.AddWithValue("@quantity", product.QuantityInStock);
+
                     command.ExecuteNonQuery();
                 }
             }
